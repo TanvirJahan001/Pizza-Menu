@@ -78,7 +78,7 @@ const Pizza = () => {
                   <h3 className="pizza__title">{pizza.name}</h3>
                   <p className="pizza__ingredients">{pizza.ingredients}</p>
                   <span className="pizza__price">
-                    {pizza.soldOut ? "SOLD OUT" : pizza.price}
+                    {pizza.soldOut ? "SOLD OUT" : `Price: ${pizza.price}`}
                   </span>
                 </div>
               </div>
