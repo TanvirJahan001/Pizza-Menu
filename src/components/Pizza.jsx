@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "../index.css";
 import focaccia from "../pizzas/focaccia.jpg";
 import funghi from "../pizzas/funghi.jpg";
@@ -50,6 +51,23 @@ const pizzaData = [
   },
 ];
 const Pizza = () => {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const hours = currentTime.getHours();
+  const minutes = currentTime.getMinutes();
+  const seconds = currentTime.getSeconds();
+  const openHour = 8;
+  const closeHour = 21;
+  const isOpen = hours >= openHour && hours < closeHour;
+
   return (
     <div className="container">
       <div className="header">
@@ -86,6 +104,22 @@ const Pizza = () => {
           })}{" "}
         </div>
       </div>
+
+      <div className="footer">
+        <h1 className="footer__time">
+          <div>
+            {hours}:{minutes < 10 ? "0" : ""}
+            {minutes}:{seconds < 10 ? "0" : ""}
+            {seconds}
+          </div>
+          <div>
+            {isOpen
+              ? "We're currently Open!"
+              : "We're currently Closed! Come back tomorrow between 8 AM and 9 PM!"}
+          </div>
+        </h1>
+      </div>
+      <button className="btn">Order Now</button>
     </div>
   );
 };

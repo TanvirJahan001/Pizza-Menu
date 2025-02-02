@@ -156,6 +156,12 @@ body {
   margin: 3rem 0;
 }
 
+.footer__time {
+  display: flex;
+  justify-content: center;
+  gap: 1.6rem;
+}
+
 .order {
   display: flex;
   flex-direction: column;
@@ -167,6 +173,7 @@ body {
   color: inherit;
   font-family: inherit;
   border: none;
+  border-radius: 0.5rem;
   font-size: 1.4rem;
   font-weight: 500;
   background-color: #edc84b;
